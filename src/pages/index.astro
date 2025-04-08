@@ -70,3 +70,11 @@ import Layout from "../layouts/Layout.astro";
     color: #888;
   }
 </style>
+<script>
+  import { actions } from "astro:actions";
+  const button = document.querySelector(".greeting-button");
+  button?.addEventListener("click", async () => {
+    const { data, error } = await actions.getGreeting({ name: "Houston" });
+    if (!error) alert(data);
+  });
+</script>
